@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:thread_app/home.dart';
-import 'package:thread_app/signup.dart';
+import 'package:thread_app/login.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class SingnPage extends StatelessWidget {
+  const SingnPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     TextEditingController email = TextEditingController();
     TextEditingController password = TextEditingController();
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
@@ -25,7 +24,7 @@ class LoginPage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(25.0),
             child: Text(
-              'LogIn',
+              'SIGN UP',
               style: TextStyle(fontFamily: 'Salsa', fontSize: 30),
             ),
           ),
@@ -33,7 +32,7 @@ class LoginPage extends StatelessWidget {
             padding: EdgeInsets.only(left: 25),
             child: Text(
               'Email',
-              style: TextStyle(fontFamily: 'Salsa', fontSize: 20),
+              style: TextStyle(fontFamily: 'Salsa', fontSize: 30),
             ),
           ),
           Padding(
@@ -53,7 +52,7 @@ class LoginPage extends StatelessWidget {
             padding: EdgeInsets.only(left: 25),
             child: Text(
               'password',
-              style: TextStyle(fontFamily: 'Salsa', fontSize: 20),
+              style: TextStyle(fontFamily: 'Salsa', fontSize: 30),
             ),
           ),
           Padding(
@@ -66,18 +65,7 @@ class LoginPage extends StatelessWidget {
                   border: OutlineInputBorder()),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 18.0),
-            child: Row(
-              children: [
-                Checkbox(
-                  value: true,
-                  onChanged: (Value) {},
-                ),
-                Text('Remember me')
-              ],
-            ),
-          ),
+
           /* TextButton(
               onPressed: () {
                 Navigator.push(context,
@@ -99,18 +87,11 @@ class LoginPage extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => HomePage()));
                   },
                   child: Text(
-                    'LOGIN',
+                    'SIGN UP',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Salsa',
-                      fontSize: 20,
-                    ),
+                        color: Colors.white, fontFamily: 'Salsa', fontSize: 20),
                   )),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 310),
-            child: Text('forgot password?'),
           ),
           SizedBox(
             height: 30,
@@ -160,16 +141,16 @@ class LoginPage extends StatelessWidget {
                 width: 130,
               ),
               Text(
-                'need an account?',
+                'Already a user?',
                 style: TextStyle(fontSize: 15),
               ),
               TextButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SingnPage()));
+                        MaterialPageRoute(builder: (context) => LoginPage()));
                   },
                   child: Text(
-                    'SIGN_UP',
+                    'LOG_IN',
                     style: TextStyle(fontFamily: 'Salsa', fontSize: 20),
                   ))
             ],
