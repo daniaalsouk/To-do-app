@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 30,
-                              color: Color.fromARGB(255, 99, 16, 110),
+                              color: Colors.pink[300],
                               fontWeight: FontWeight.bold),
                         ),
                         TextField(
@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: Text("Add"),
                           style: TextButton.styleFrom(
-                            backgroundColor: Color.fromARGB(255, 156, 82, 206),
+                            backgroundColor: Colors.pink[400],
                             primary: Colors.white,
                           ),
                         )
@@ -131,10 +131,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ));
         },
-        backgroundColor: Color.fromARGB(255, 99, 16, 110),
+        backgroundColor: Colors.pink[400],
         child: Icon(Icons.add),
       ),
-      backgroundColor: Color.fromARGB(255, 156, 82, 206),
+      backgroundColor: Colors.pink[200],
       /*appBar: AppBar(
         title: Text(
           'ToDayDo',
@@ -171,12 +171,13 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 40,
-                      fontWeight: FontWeight.bold),
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Salsa'),
                 ),
               ],
             ),
             Text(
-              '4 tasks',
+              ' tasks',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
@@ -185,59 +186,71 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 20,
             ),
-            Expanded(
-              child: Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  ),
-                  child: ListView.builder(
-                      itemCount: tasksList.reversed.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          leading: Checkbox(
-                              activeColor: Color.fromARGB(255, 156, 82, 206),
-                              value: true,
-                              onChanged: (value) {
-                                _handleToDoChange(tasksList[index]);
-                              }),
-                          title: Text(tasksList[index].title),
-                          trailing: IconButton(
-                              onPressed: () {
-                                _deleteToDoItem(tasksList[index].id);
-                              },
-                              icon: Icon(Icons.dangerous)),
-                        );
-                      })
-                  //  ListView(
+            tasksList.isEmpty
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 200,
+                      ),
+                      Center(
+                        child: Text('No Data'),
+                      ),
+                    ],
+                  )
+                : Expanded(
+                    child: Container(
+                        height: 300,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
+                          ),
+                        ),
+                        child: ListView.builder(
+                            itemCount: tasksList.reversed.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                leading: Checkbox(
+                                    activeColor: Colors.pink[400],
+                                    value: tasksList[index].isDone,
+                                    onChanged: (value) {
+                                      _handleToDoChange(tasksList[index]);
+                                    }),
+                                title: Text(tasksList[index].title),
+                                trailing: IconButton(
+                                    onPressed: () {
+                                      _deleteToDoItem(tasksList[index].id);
+                                    },
+                                    icon: Icon(Icons.dangerous)),
+                              );
+                            })
+                        //  ListView(
 
-                  //   children: [
-                  //     ListTile(
-                  //     ,
-                  //       title: ,
-                  //       trailing:
-                  //     ),
-                  //     ListTile(
-                  //       title: Text('go shopping'),
-                  //       trailing: Checkbox(
-                  //         value: false,
-                  //         onChanged: null,
-                  //       ),
-                  //     ),
-                  //     ListTile(
-                  //       title: Text('go shopping'),
-                  //       trailing: Checkbox(
-                  //         value: false,
-                  //         onChanged: null,
-                  //       ),
-                  //     )
-                  //   ],
-                  // ),
+                        //   children: [
+                        //     ListTile(
+                        //     ,
+                        //       title: ,
+                        //       trailing:
+                        //     ),
+                        //     ListTile(
+                        //       title: Text('go shopping'),
+                        //       trailing: Checkbox(
+                        //         value: false,
+                        //         onChanged: null,
+                        //       ),
+                        //     ),
+                        //     ListTile(
+                        //       title: Text('go shopping'),
+                        //       trailing: Checkbox(
+                        //         value: false,
+                        //         onChanged: null,
+                        //       ),
+                        //     )
+                        //   ],
+                        // ),
+                        ),
                   ),
-            ),
           ],
         ),
       ),
